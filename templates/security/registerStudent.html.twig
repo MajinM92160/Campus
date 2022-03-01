@@ -1,0 +1,66 @@
+{% extends "base.html.twig" %}
+
+{# ================ TITRE DE LA PAGE =======================#}
+
+{% block title %}
+    {{ parent() }} Inscription
+{% endblock %}
+
+{# ================ CONTENU =======================#}
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success text-center">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+    <div class="alert alert-danger text-center">
+        {{ message }}
+    </div>
+    {% endfor %}
+
+    <a href="{{path('home') }}">
+        <img src="{{ asset('img/logo1.png') }}" alt="LOGO ICI" class="mb-5 mt-3 w-25" >
+    </a>
+
+    <div class="contenu">
+        <h2 class="jesuis">Code Secret correct !</h2>
+        <h4 class="soustitre" style="color:#28A19A; font-size:18px; font-weight:500;">Vous serez rattaché au BDE : "{{office_name}}"</h4>
+        <p class="soustitre" style="color:#28A19A;">Adresse : {{office_address}}</p>
+        <p class="soustitre" style="color:#28A19A;">Téléphone : {{office_phone}}</p>
+        <p class="soustitre" style="color:#28A19A; margin-bottom:20px;">Présentation : {{office_pres}}</p>
+
+
+        {{ form_start(form) }}
+
+        {{ form_row(form.email) }}
+
+        {{ form_row(form.password) }}
+
+        {{ form_row(form.confirmPassword) }}
+
+        {{ form_row(form.firstName) }}
+
+        {{ form_row(form.lastName) }}
+
+        {{ form_row(form.phone) }}
+
+        {{ form_row(form.address) }}
+
+        {#  {{ dump(office_id) }}  #}
+
+        <input type="hidden" name="office_id" value="{{ office_id }}">
+
+        {{ form_row(form.enregistrer) }}
+        
+        {{ form_end(form) }}
+        
+        <div class="bouton2">
+            <a href="{{ path('home') }}" class="bouton" role="button" type="button">Retour</a>
+        </div>
+    </div>
+
+{% include "base/footerScroll.html.twig" %}
+{% endblock %}

@@ -1,0 +1,49 @@
+{% extends "base.html.twig" %}
+
+{# ================ TITRE DE LA PAGE ======================= #}
+
+{% block title %}
+    {{ parent() }} Code BDE
+{% endblock %}
+
+{# ================ CONTENU ======================= #}
+
+{% block body %}
+
+    <a href="{{path('home') }}">
+        <img src="{{ asset('img/logo1.png') }}" alt="LOGO ICI" class="mb-5 mt-3 w-25" >
+    </a>
+
+    <div class="contenu">
+        <h2 class="jesuis">Connexion...</h2>
+
+        <form action="{{ path('login') }}" method="post">
+            <div class="conteneurChamp">
+                <input type="email" name="_username" class="champFormulaire" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Mon email">
+                <input type="password" name="_password" class="champFormulaire" id="exampleInputPassword1" placeholder="Mon mot de passe">
+            </div>
+
+            <div class="conteneurLiens">
+                <a href="" class="liens1">
+                    <small id="emailHelp" class="form-text text-muted">Mot de passe oublié ?</small>
+                </a>
+                <a href="{{path('registerConnectStudent') }}" class="liens1 liens2">
+                    <small id="emailHelp" class="form-text text-muted">Pas encore inscrit ?</small>
+                </a>
+            </div>
+
+            <div class="bouton2">
+                <button type="submit" class="bouton">Valider</button>
+            </div>
+        </form>
+        <div class="bouton2">
+            <a href="{{ path('home') }}" class="bouton" role="button" type="button">Retour</a>
+        </div>
+    </div>
+
+    <div class="spanLogin1">
+        {% include "base/footerNoScroll.html.twig" %}
+    </div>
+
+
+{% endblock %}

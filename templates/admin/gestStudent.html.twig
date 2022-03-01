@@ -1,0 +1,231 @@
+<body>
+{# ================ MESSAGES FLASH =======================#}
+        
+    {% for message in app.flashes('success') %}
+    <div class="alert alert-success text-center">
+        {{ message }}
+    </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+    <div class="alert alert-danger text-center">
+        {{ message }}
+    </div>
+{% endfor %}
+
+
+
+<!-- ========= SI ON VEUT VOIR LA LISTE DES ETUDIANTS ========== -->
+
+{% if app.request.get('_route') == 'gestStudent' %}
+    <div class="container tableauInfoPC" style="margin-top: 200px;">
+        <h1>Liste de tous les étudiants inscrits</h1>
+            {# <p>A voir comment ça se passe pour la réinitialisation du mot de passe avant de faire un UserType ? </p> #}
+        <table class="table table-light mt-5" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.363);">
+            <thead>
+                <tr>
+                    <th scope="col" style="color: #88569F;">#</th>
+                    <th scope="col" style="color: #88569F;">Email</th>
+                    <th scope="col" style="color: #88569F;">Prénom</th>
+                    <th scope="col" style="color: #88569F;">Nom</th>
+                    <th scope="col" style="color: #88569F;">Téléphone</th>
+                    <th scope="col" style="color: #88569F;">Adresse</th>
+                    <th scope="col" style="color: #88569F;">Nom BDE</th>
+                    <th scope="col" style="color: #88569F;">Voir son BDE</th>
+                    <th scope="col" style="color: #88569F;">Voir ses participations</th>
+                    <th scope="col" style="color: #88569F;">Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                    <tr>
+                        <td style="color: #88569F;">{{ student.id }}</td>
+                        <td style="color: #88569F;">{{ student.email }}</td>
+                        <td style="color: #88569F;">{{ student.firstName }}</td>
+                        <td style="color: #88569F;">{{ student.lastName }}</td>
+                        <td style="color: #88569F;">{{ student.phone }}</td>
+                        <td style="color: #88569F;">{{ student.address }}</td>
+                        <td style="color: #88569F;">{{ student.office }}</td>
+                        <td style="color: #88569F;">
+                            <a style="background-color: #88569F; padding:7px; font-size:medium;" href="{{ path('gestStudentBde', {id: student.office.id}) }}" class="bouton">BDE</a>
+                        </td>
+                        <td style="color: #88569F;">
+                            <a style="background-color: #88569F; padding:7px; font-size:medium;" href="" class="bouton">Participations</a>
+                        </td>
+                        <td style="color: #88569F;">
+                            <a style="background-color: #88569F; padding:7px; font-size:medium;" href="" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce BDE ?')" class="bouton">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    <div class="container tableauInfoTel" style="margin-top: 200px; display:none;">
+            <h1>Liste des BDE inscrits</h1>
+            {# <p>A voir comment ça se passe pour la réinitialisation du mot de passe avant de faire un UserType ? </p> #}
+        <table class="table table-light mt-5" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.363);">
+            <thead>
+                <tr>
+                    <th scope="col" style="color: #88569F;">#</th>
+                    <th scope="col" style="color: #88569F;">Email</th>
+                    <th scope="col" style="color: #88569F;">Prénom</th>
+                    <th scope="col" style="color: #88569F;">Nom</th>
+                    <th scope="col" style="color: #88569F;">Téléphone</th>
+                    <th scope="col" style="color: #88569F;">Adresse</th>
+                    <th scope="col" style="color: #88569F;">Nom BDE</th>
+                    <th scope="col" style="color: #88569F;">Voir son BDE</th>
+                    <th scope="col" style="color: #88569F;">Voir ses participations</th>
+                    <th scope="col" style="color: #88569F;">Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                    <tr>
+                        <td style="color: #88569F;">{{ student.id }}</td>
+                        <td style="color: #88569F;">{{ student.email }}</td>
+                        <td style="color: #88569F;">{{ student.firstName }}</td>
+                        <td style="color: #88569F;">{{ student.lastName }}</td>
+                        <td style="color: #88569F;">{{ student.phone }}</td>
+                        <td style="color: #88569F;">{{ student.address }}</td>
+                        <td style="color: #88569F;">{{ student.office }}</td>
+                        <td style="color: #88569F;">
+                            <a style="background-color: #88569F; padding:7px; font-size:medium;" href="{{ path('gestStudentBde', {id: student.office.id}) }}" class="bouton">BDE</a>
+                        </td>
+                        <td style="color: #88569F;">
+                            <a style="background-color: #88569F; padding:7px; font-size:medium;" href="" class="bouton">Participations</a>
+                        </td>
+                        <td style="color: #88569F;">
+                            <a style="background-color: #88569F; padding:7px; font-size:medium;" href="" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce BDE ?')" class="bouton">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+    <div class="bouton1">
+        <a href="{{ path('backMenu') }}" style="background-color: #88569F;" class="bouton" role="button" type="button">Retour</a>
+    </div>
+
+<!-- ========= SI ON VEUT VOIR LE BDE DE X ETUDIANT ========== -->
+{% else %}
+
+<div class="container tableauInfoPC" style="margin-top: 200px;">
+        <h1>BDE de l'étudiant</h1>
+        {# <p>A voir comment ça se passe pour la réinitialisation du mot de passe avant de faire un UserType ? </p> #}
+        <table class="table table-light mt-5" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.363);">
+            <thead>
+                <tr>
+                    <th scope="col" style="color: #88569F;">#</th>
+                    <th scope="col" style="color: #88569F;">Email</th>
+                    <th scope="col" style="color: #88569F;">Nom</th>
+                    <th scope="col" style="color: #88569F;">Presentation</th>
+                    <th scope="col" style="color: #88569F;">Phone</th>
+                    <th scope="col" style="color: #88569F;">Adresse</th>
+                    <th scope="col" style="color: #88569F;">Code secret</th>
+                    <th scope="col" style="color: #88569F;">Voir ses étudiants</th>
+                    <th scope="col" style="color: #88569F;">Voir ses évènements</th>
+                    <th scope="col" style="color: #88569F;">Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for offices in offices %}
+                <!-- CONDITION POUR MASQUER LADMINISTRATEUR DE LA LISTE -->
+                    {% if offices.roles == ["admin"] %}
+                    {% else %}
+                        <tr>
+                            <td style="color: #88569F;">{{ offices.id }}</td>
+                            <td style="color: #88569F;">{{ offices.email }}</td>
+                            <td style="color: #88569F;">{{ offices.name }}</td>
+                            <td style="color: #88569F;">{{ offices.presentation }}</td>
+                            <td style="color: #88569F;">{{ offices.phone }}</td>
+                            <td style="color: #88569F;">{{ offices.address }}</td>
+                            <td style="color: #88569F;">{{ offices.codeOffice }}</td>
+                            <td style="color: #88569F;">
+                                <a style="background-color: #88569F; padding:7px; font-size:medium;" href="{{ path('gestBdeStudent', {id: offices.id}) }}" class="bouton">Étudiants</a>
+                            </td>
+                            <td style="color: #88569F;">
+                                <a style="background-color: #88569F; padding:7px; font-size:medium;" href="{{ path('bdeEvents', {id: offices.id}) }}" class="bouton">Évènements</a>
+                            </td>
+                            <td style="color: #88569F;">
+                                <a style="background-color: #88569F; padding:7px; font-size:medium;" href="{{ path('deleteBde', {id: offices.id}) }}" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce BDE ?')" class="bouton">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endif %}
+                {% endfor %}
+            </tbody>
+        </table>
+</div>
+<div class="container tableauInfoTel" style="margin-top: 200px; display:none;">
+    {% for students in students %}
+        <h1>BDE de l'étudiant {{ students.name }}</h1>
+    {% endfor %}
+        {# <p>A voir comment ça se passe pour la réinitialisation du mot de passe avant de faire un UserType ? </p> #}
+    <table class="table table-light mt-5" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.363);">
+        <thead>
+            <tr>
+                <th scope="col" style="color: #88569F;">#</th>
+                <th scope="col" style="color: #88569F;">Email</th>
+                <th scope="col" style="color: #88569F;">Nom</th>
+                <th scope="col" style="color: #88569F;">Presentation</th>
+                <th scope="col" style="color: #88569F;">Phone</th>
+                <th scope="col" style="color: #88569F;">Adresse</th>
+                <th scope="col" style="color: #88569F;">Code secret</th>
+                <th scope="col" style="color: #88569F;">Voir ses étudiants</th>
+                <th scope="col" style="color: #88569F;">Voir ses évènements</th>
+                <th scope="col" style="color: #88569F;">Supprimer</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for offices in offices %}
+            <!-- CONDITION POUR MASQUER LADMINISTRATEUR DE LA LISTE -->
+                {% if offices.roles == ["admin"] %}
+                {% else %}
+                    <tr>
+                        <td style="color: #88569F;">{{ offices.id }}</td>
+                        <td style="color: #88569F;">{{ offices.email }}</td>
+                        <td style="color: #88569F;">{{ offices.name }}</td>
+                        <td style="color: #88569F;">{{ offices.presentation }}</td>
+                        <td style="color: #88569F;">{{ offices.phone }}</td>
+                        <td style="color: #88569F;">{{ offices.address }}</td>
+                        <td style="color: #88569F;">{{ offices.codeOffice }}</td>
+                        <td style="color: #88569F;">
+                            <a style="background-color: #88569F; padding:7px; font-size:medium;" href="{{ path('gestBdeStudent', {id: offices.id}) }}" class="bouton">Étudiants</a>
+                        </td>
+                        <td style="color: #88569F;">
+                            <a style="background-color: #88569F; padding:7px; font-size:medium;" href="{{ path('bdeEvents', {id: offices.id}) }}" class="bouton">Évènements</a>
+                        </td>
+                        <td style="color: #88569F;">
+                            <a style="background-color: #88569F; padding:7px; font-size:medium;" href="{{ path('deleteBde', {id: offices.id}) }}" onclick="return confirm('Etes-vous sûr de vouloir supprimer ce BDE ?')" class="bouton">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endif %}
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+<div class="bouton1">
+    <a href="{{ path('gestStudent') }}" style="background-color: #88569F;" class="bouton" role="button" type="button">Retour</a>
+</div>
+
+
+
+<!-- ========= RETOUR + FOOTER ========== -->
+{% endif %}
+
+    
+    <div class="spanLogin1">
+        {% include "base/footerFixed.html.twig" %}
+    </div>
+    <div style="display:none;" class="spanLogin2">
+        {% include "base/footerNoScroll.html.twig" %}
+    </div>
+
+</body>
+
+
+
+
+
+
+

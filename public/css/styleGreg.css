@@ -1,0 +1,787 @@
+ /* @font-face {
+    font-family: bebasKai;
+    src: url(police/BebasKai.otf),
+        url(police/BebasKai.ttf),
+        url(police/bebaskai-webfont.woff),
+        url(police/bebaskai-webfont.woff2),
+}
+
+@font-face {
+    font-family: cottonButter;
+    src: url(police/CottonButter.ttf);
+} */
+
+/* @font-face {
+    font-family: burbank;
+    src: url(police/Burbank\ Big\ Condensed\ Black.ttf);
+} */
+
+@font-face {
+    font-family: raleway;
+    src: url(police/Raleway-VariableFont_wght.ttf),
+    url(police/Raleway-Italic-VariableFont_wght.ttf),
+}
+
+@font-face {
+    font-family: budidaya;
+    src: url(police/Budidaya\ Regular.otf),
+        url(police/Budidaya\ Italic.otf);
+}
+
+body {
+    font-family : raleway;
+    background-image: url(../img/background.jpg);
+    text-align: center;
+    overflow-x: hidden;
+}
+
+
+
+body .contenu {
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.363);
+    width: 30vw;
+    margin: 0 auto;
+    padding: 18px 50px;
+    margin-bottom: 80px;
+}
+
+.jesuis {
+    font-weight: 900;
+    color: #28A19A;
+    font-family: budidaya;
+    font-size: 70px;
+    margin-top: 18px;
+}
+
+.bouton1, .bouton2 {
+    display: block;
+}
+
+.bouton {
+    padding: 7px 0px;
+    background-color: #28A19A;
+    margin: 5px;
+    text-decoration: none;
+    font-weight: 200;
+    color: white;
+    text-align: center;
+    width: 220px;
+    font-size: 25px;
+
+    border-width: 0px !important;
+    border-style: none !important;
+    border-image: none !important;
+}
+.bouton:hover {
+    color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.295);
+    background-color: #2fbab2;
+    transition: 0.3s;
+}
+
+.bouton:not(:hover) {
+    transition: 0.3s;
+}
+
+.bouton1 {
+    margin-top: 30px;
+}
+
+.bouton2 {
+    margin-bottom: 22px;
+}
+
+h1 {
+    font-family: budidaya;
+    font-size: 55px;
+    margin-top: 15px;
+    color: #88569F;
+    margin-bottom: 20px;
+}
+
+.soustitre {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 400;
+    color: #88569F;
+}
+
+.minititre {
+    font-family: budidaya;
+    font-size: 40px;
+    color: #88569F;
+    margin-bottom: 0px;
+    margin-top: 20px;
+}
+
+.texte {
+    margin: 0;
+    font-size: 20px;
+    font-weight: 400;
+    color: #88569F;
+}
+
+.margbas {
+    margin-bottom: 18px;
+}
+
+.part {
+    flex-direction: column;
+    margin-top: 10px;
+    margin-bottom: 18px;
+}
+
+.part, .logoPart1, .logoPart2 {
+    display: flex;
+
+}
+
+.logoPart1, .logoPart2 {
+    justify-content: space-around;
+    flex-direction: row;
+}
+
+.logoPart2 {
+    justify-content: space-evenly;
+}
+
+.logopart {
+    width: 130px;
+}
+
+.footerNoScroll {
+    background-color: #383838;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 50px;
+    align-items: center;
+    position: relative;
+    bottom: 0;
+    width: 100vw;
+}
+
+.footerScroll {
+    background-color: #383838;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 50px;
+    align-items: center;
+}
+
+.footerFixed {
+    background-color: #383838;
+    display: flex;
+    justify-content: space-evenly;
+    padding: 50px;
+    align-items: center;
+    position: fixed;
+    bottom: 0;
+    width: 100vw;
+}
+
+.gestFooter {
+    min-height: calc(100vh - 345px);
+}
+
+
+
+.apropos {
+    color: white;
+    font-size: 19px;
+}
+
+.liens {
+    display: flex;
+    flex-direction: column;
+    font-size: 19px;
+}
+
+.liens a {
+    text-decoration: none;
+    color: white;
+    margin: 12px;
+}
+
+.liens a:hover {
+    color: white;
+}
+
+.logoFooter {
+    width: 30px;
+    margin: 5px;
+}
+
+.apropos, .reseaux, .liens {
+    width: 30vw;
+}
+
+/* ========= FORMULAIRES =========== */
+
+.champFormulaire {
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    border-color: #2D2A267D;
+    display: block;
+    margin: 0 auto;
+    padding: 5px 4px;
+    margin-top: 15px;
+    color: #818181;
+    line-height: 17px;
+    outline: 0;
+    font-weight: 400;
+}
+
+.champFormulaireCheck {
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    border-color: #2D2A267D;
+    display: block;
+    margin: 0 auto;
+    padding: 5px 4px;
+    margin-top: 15px;
+    color: #818181;
+    line-height: 17px;
+    outline: 0;
+    font-weight: 400;
+    width: 205px;
+}
+
+.conteneurChamp {
+    margin-top: 30px;
+    margin-bottom: 22px;
+}
+
+.conteneurLiens {
+    display: flex;
+    flex-direction: column;
+}
+
+.liens1 {
+    text-decoration: none;
+}
+
+.liens2 {
+    margin-bottom: 30px;
+}
+
+
+/* FORMULAIRE ETRANGE REGISTERDUDENT */
+
+#registration_email, #registration_password, #registration_confirmPassword, #registration_firstName, #registration_lastName, #registration_phone, #registration_address, #registration_name, #registration_presentation, #registration_code_office {
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    border-color: #2D2A267D;
+    display: block;
+    margin: 0 auto;
+    padding: 5px 4px;
+    margin-top: 15px;
+    color: #818181;
+    line-height: 17px;
+    outline: 0;
+    font-weight: 400;
+}
+
+#registration_enregistrer {
+    padding: 7px 0px;
+    background-color: #28A19A;
+    margin: 5px;
+    text-decoration: none;
+    font-weight: 200;
+    color: white;
+    text-align: center;
+    width: 220px;
+    font-size: 25px;
+    margin-top: 20px;
+
+    border-radius: 0px !important;
+    border-width: 0px !important;
+    border-style: none !important;
+    border-image: none !important;
+}
+#registration_enregistrer:hover {
+    color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.295);
+    background-color: #2fbab2;
+    transition: 0.3s;
+}
+
+#registration_enregistrer:not(:hover) {
+    transition: 0.3s;
+}
+
+/* =========== LISTEVENT ========== */
+
+.contenuCarte {
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.363);
+    width: 60vw;
+    margin: 0 auto;
+    padding: 18px 50px;
+    margin-bottom: 33px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.contenuCarte h3, .contenuCarte p, .contenuCarte button, .contenuCarte span {
+    display: inline-block;
+}
+
+.contenuCarte span {
+    border: solid 1px #C7E5E3;
+    padding: 7px 0 10px;
+}
+
+.contenuCarte h3, .contenuCarte p {
+    margin: 0;
+    padding: 0;
+    color: #28A19A;
+}
+
+.bouton3 {
+    margin: 0;
+}
+
+.contenuCarte h3 {
+    font-weight: 400;
+}
+
+.space {
+    margin-top: 140px;
+}
+
+/* ============= NAVBAR ============ */
+nav {
+    background-color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.363);
+    width: 100vw;
+    margin: 0 auto;
+    padding: 0;
+    margin-bottom: 70px;
+    position: fixed;
+    top: 0;
+    height: 70px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.conteneurlogoNav {
+    align-items: flex-start;
+}
+
+.lienNav {
+    align-items: flex-end;
+}
+
+.lienNav a {
+    color: #DA8B8E;
+    text-decoration: none;
+    padding: 30px;
+    margin-top: 30px;
+}
+
+.lienNav a:hover {
+    color: #5f5f5f;
+}
+
+.logoNav {
+    height: 64px;
+}
+
+/* ============== DETAILSEVENT ============== */
+
+.contenu p {
+    color: #28A19A;
+}
+
+.spanDetail {
+    width: 20vw;
+    height: 0px;
+    border: solid 1px #C7E5E3;
+    margin: 0 auto;
+}
+
+.minidetail {
+    margin: 10px;
+}
+
+/* ============= STUDENTINFOS =============== */
+
+.table>:not(:first-child) {
+    border-top: none;
+}
+
+
+/* ============= officeListEvent (formulaire chelou) ========== */
+
+#event_name, #event_place, #event_description, #event_price {
+    border-style: solid;
+    border-width: 0 0 2px 0;
+    border-color: #2D2A267D;
+    display: block;
+    margin: 0 auto;
+    padding: 5px 4px;
+    margin-top: 15px;
+    color: #818181;
+    line-height: 17px;
+    outline: 0;
+    font-weight: 400;
+}
+
+#event_date_month, .form-check-label {
+    color: #818181;
+    margin-left: 10px;
+    margin-top: 2px;
+}
+
+.form-check {
+    display: flex;
+    align-content: center;
+    align-items: center;
+}
+
+#event_free {
+    width: 25px;
+    height: 25px;
+}
+
+#event_Valider {
+    padding: 7px 0px;
+    background-color: #28A19A;
+    margin: 5px;
+    text-decoration: none;
+    font-weight: 200;
+    color: white;
+    text-align: center;
+    width: 220px;
+    font-size: 25px;
+    margin-top: 20px;
+
+    border-radius: 0px !important;
+    border-width: 0px !important;
+    border-style: none !important;
+    border-image: none !important;
+}
+#event_Valider:hover {
+    color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.295);
+    background-color: #2fbab2;
+    transition: 0.3s;
+}
+
+#event_Valider:not(:hover) {
+    transition: 0.3s;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ============== RESPONSIVE ============ */
+@media screen and (max-width: 1291px) {
+
+    /* VW */
+    body .contenu {
+        width: 60vw;
+    }
+
+    .contenuCarte {
+        width: 60vw;
+    }
+
+    .spanDetail {
+        width: 40vw;
+    }
+
+    .boutonDetail {
+        display: block;
+    }
+
+    .contenuCartePC {
+        flex-direction: column;
+    }
+
+    .contenuCartePC span {
+        /* si display none, les blocks vont prendre sa place alors que visibility, c'est juste inbvisible :) */
+        visibility: hidden;
+    }
+
+    .tableauInfoPC {
+        display: none;
+    }
+
+    .tableauInfoTel {
+        display: block !important;
+    }
+
+    .tableauInfoTel tr { 
+        display: block; float: left; 
+    }
+
+    .tableauInfoTel th, td { 
+        display: block; 
+    }
+
+    .tableauInfoTel thead, .tableauInfoTel tbody {
+        display: inline-block;
+    }
+
+    .tableauInfoTel table {
+        background-color: #F8F9FA;
+    }
+}
+
+@media screen and (max-width: 768px) {
+
+    /* VW */
+    body .contenu {
+        width: 90vw;
+    }
+
+    .contenuCarte {
+        width: 90vw;
+    }
+
+    .spanDetail {
+        width: 70vw;
+    }
+
+    .boutonDetail {
+        display: block;
+    }
+
+    .contenuCartePC {
+        flex-direction: column;
+    }
+
+    .contenuCartePC span {
+        /* si display none, les blocks vont prendre sa place alors que visibility, c'est juste inbvisible :) */
+        visibility: hidden;
+    }
+
+    .tableauInfoPC {
+        display: none !important;
+    }
+
+    .tableauInfoTel {
+        display: block !important;
+    }
+
+    .tableauInfoTel tr { 
+        display: block; float: left; 
+    }
+
+    .tableauInfoTel th, td { 
+        display: block; 
+    }
+
+    .tableauInfoTel thead, .tableauInfoTel tbody {
+        display: inline-block;
+    }
+
+    .tableauInfoTel table {
+        background-color: #F8F9FA;
+    }
+
+    .spanLogin1 {
+        display: none;
+    }
+
+    .spanLogin2 {
+        display: block !important;
+    }
+
+    .lienNav a {
+        padding: 30px 5px;
+    }
+
+}
+
+/* ============= Panier ============= */
+
+ 
+
+
+.needSpace {
+    margin : 20px;
+}
+
+
+
+/* ============= Formulaire de contact ============= */
+
+
+
+
+/* ============= MENU BURGER ============= */
+@media screen and (max-width: 1291px) {
+
+    .menuBase {
+        display: none;
+    }
+
+    .menuBurger {
+        display: block !important;
+        
+    }
+
+    #menuToggle
+    {
+    display: block;
+    position: relative;
+    top: 28px;
+    left: 50px;
+    
+    z-index: 1;
+    
+    -webkit-user-select: none;
+    user-select: none;
+    }
+
+    #menuToggle a
+    {
+    text-decoration: none;
+    color: #88569F;
+    
+    transition: color 0.3s ease;
+    }
+
+    #menuToggle a:hover
+    {
+    color: #bb9ec9;
+    }
+
+
+    #menuToggle input
+    {
+    display: block;
+    width: 40px;
+    height: 32px;
+    position: absolute;
+    top: -7px;
+    left: -5px;
+    
+    cursor: pointer;
+    
+    opacity: 0; /* hide this */
+    z-index: 2; /* and place it over the hamburger */
+    
+    -webkit-touch-callout: none;
+    }
+
+    /*
+    * Just a quick hamburger
+    */
+    #menuToggle span
+    {
+    display: block;
+    width: 33px;
+    height: 4px;
+    margin-bottom: 5px;
+    position: relative;
+    
+    background: rgb(228, 228, 228);
+    border-radius: 3px;
+    
+    z-index: 1;
+    
+    transform-origin: 4px 0px;
+    
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+                opacity 0.55s ease;
+    }
+
+    #menuToggle span:first-child
+    {
+    transform-origin: 0% 0%;
+    }
+
+    #menuToggle span:nth-last-child(2)
+    {
+    transform-origin: 0% 100%;
+    }
+
+    /* 
+    * Transform all the slices of hamburger
+    * into a crossmark.
+    */
+    #menuToggle input:checked ~ span
+    {
+    opacity: 1;
+    transform: rotate(45deg) translate(-2px, -1px);
+    background: #DA8B8E;
+    }
+
+    /*
+    * But let's hide the middle one.
+    */
+    #menuToggle input:checked ~ span:nth-last-child(3)
+    {
+    opacity: 0;
+    transform: rotate(0deg) scale(0.2, 0.2);
+    }
+
+    /*
+    * Ohyeah and the last one should go the other direction
+    */
+    #menuToggle input:checked ~ span:nth-last-child(2)
+    {
+    transform: rotate(-45deg) translate(0, -1px);
+    }
+
+    /*
+    * Make this absolute positioned
+    * at the top left of the screen
+    */
+    #menu
+    {
+    position: absolute;
+    width: 300px;
+    margin: -100px 0 0 -50px;
+    padding: 50px;
+    padding-top: 125px;
+    
+    background: rgba(223, 223, 223, 0.945);
+    list-style-type: none;
+    -webkit-font-smoothing: antialiased;
+    /* to stop flickering of text in safari */
+    
+    transform-origin: 0% 0%;
+    transform: translate(-100%, 0);
+    
+    transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0);
+    }
+
+    #menu li
+    {
+    padding: 10px 0;
+    font-size: 22px;
+    }
+
+    /*
+    * And let's slide it in from the left
+    */
+    #menuToggle input:checked ~ ul
+    {
+    transform: none;
+    }
+
+
+}

@@ -1,0 +1,34 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} Modification profile
+{% endblock %}
+
+{% block body %}
+
+<section class="gestFooter">
+		<div class="space"></div>
+
+<div class="contenu">
+
+<h1> Modifiez vos informations </h1>
+
+{{ form_start(form) }}
+
+        {{ form_row(form.email) }}
+
+        {{ form_row(form.firstName) }}
+
+        {{ form_row(form.lastName) }}
+
+        {{ form_row(form.phone) }}
+
+        {{ form_row(form.address) }}
+
+        {{ form_row(form.enregistrer) }}
+        
+{{ form_end(form) }}
+</div>
+{% include "base/footerFixed.html.twig" %}
+
+{% endblock %}

@@ -1,0 +1,84 @@
+{% extends "base.html.twig" %}
+
+{# ================ TITRE DE LA PAGE =======================#}
+
+{% block title %}
+    {{ parent() }} Mes informations
+{% endblock %}
+
+{# ================ CONTENU =======================#}
+
+{% block body %}
+
+    <div class="container tableauInfoPC" style="margin-top: 200px;">
+        <h1>Mes informations</h1>
+        {# <p>A voir comment ça se passe pour la réinitialisation du mot de passe avant de faire un UserType ? </p> #}
+    <table class="table table-light mt-5" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.363);">
+            <thead>
+                <tr>
+                    <th scope="col" style="color: #88569F;">#</th>
+                    <th scope="col" style="color: #88569F;">Email</th>
+                    <th scope="col" style="color: #88569F;">Nom</th>
+                    <th scope="col" style="color: #88569F;">Presentation</th>
+                    <th scope="col" style="color: #88569F;">Téléphone</th>
+                    <th scope="col" style="color: #88569F;">Adresse</th>
+                    <th scope="col" style="color: #88569F;">Code Secret</th>
+                    <th scope="col" style="color: #88569F;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="color: #88569F;">{{ office.id }}</td>
+                    <td style="color: #88569F;">{{ office.email }}</td>
+                    <td style="color: #88569F;">{{ office.name }}</td>
+                    <td style="color: #88569F;">{{ office.presentation }}</td>
+                    <td style="color: #88569F;">{{ office.phone }}</td>
+                    <td style="color: #88569F;">{{ office.address }}</td>
+                    <td style="color: #88569F;">{{ office.codeOffice }}</td>
+                    <td style="color: #88569F;">
+                        <a style="background-color: #88569F; padding:7px; font-size:medium;" href="" class="bouton">Modif mdp ou mail ?</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container tableauInfoTel" style="margin-top: 200px; display:none;">
+        <h1>Mes informations</h1>
+        {# <p>A voir comment ça se passe pour la réinitialisation du mot de passe avant de faire un UserType ? </p> #}
+    <table class="table table-light mt-5" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.363);">
+            <thead>
+                <tr>
+                    <th scope="col" style="color: #88569F;">#</th>
+                    <th scope="col" style="color: #88569F;">Email</th>
+                    <th scope="col" style="color: #88569F;">Nom</th>
+                    <th scope="col" style="color: #88569F;">Presentation</th>
+                    <th scope="col" style="color: #88569F;">Téléphone</th>
+                    <th scope="col" style="color: #88569F;">Adresse</th>
+                    <th scope="col" style="color: #88569F;">Code Secret</th>
+                    <th scope="col" style="color: #88569F;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="color: #88569F;">{{ office.id }}</td>
+                    <td style="color: #88569F;">{{ office.email }}</td>
+                    <td style="color: #88569F;">{{ office.name }}</td>
+                    <td style="color: #88569F;">{{ office.presentation }}</td>
+                    <td style="color: #88569F;">{{ office.phone }}</td>
+                    <td style="color: #88569F;">{{ office.address }}</td>
+                    <td style="color: #88569F;">{{ office.codeOffice }}</td>
+                    <td style="color: #88569F;">
+                        <a style="background-color: #88569F; padding:7px; font-size:medium;" href="" class="bouton">Modif mdp ou mail ?</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="bouton1">
+        <a href="{{ path('office') }}" style="background-color: #88569F;" class="bouton" role="button" type="button">Retour</a>
+    </div>
+
+    {% include "base/footerFixed.html.twig" %}
+{% endblock %}

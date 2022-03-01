@@ -1,0 +1,88 @@
+{% extends "base.html.twig" %}
+
+{# ================ TITRE DE LA PAGE =======================#}
+
+{% block title %}
+    {{ parent() }} Mes tickets
+{% endblock %}
+
+{# ================ CONTENU =======================#}
+
+{% block body %}
+<body>
+    
+    <div class="container tableauInfoPC" style="margin-top: 200px;">
+        <h1>Mes tickets</h1>
+
+        {% if orders is empty %}
+        <p class="minititre">Pas de ticket pour le moment</p>
+        {% else %}        
+        <table class="table table-light mt-5" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.363);">
+            <thead>
+                <tr>
+                    <th scope="col" style="color:#88569F;">n° de la commande</th>
+                    <th scope="col" style="color:#88569F;">Date</th>
+                    <th scope="col" style="color:#88569F;">Tickets</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            {% for orders in orders %}
+
+                <tr>
+                    <td style="color:#88569F;">{{ orders.id }}</td>
+                    <td style="color:#88569F;"> {{ orders.date | date('d/m/Y')}}</td>
+                    <td>
+                        <a href="" class="bouton" style="background-color: #88569F; padding:7px; font-size:medium;">Voir mon ticket</a>
+                    </td>
+                    
+                </tr>
+            {% endfor %}    
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+
+    <div class="container tableauInfoTel" style="margin-top: 200px; display:none;">
+        <h1>Mes tickets</h1>
+
+        {% if orders is empty %}
+            <p class="minititre">Pas de ticket pour le moment</p>
+        {% else %}        
+        <table class="table table-light mt-5" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.363);">
+            <thead>
+                <tr>
+                    <th scope="col" style="color:#88569F;">N° de commande</th>
+                    <th scope="col" style="color:#88569F;">Date</th>
+                    <th scope="col" style="color:#88569F;">Tickets</th>
+                </tr>
+            </thead>
+            <tbody>
+
+            {% for orders in orders %}
+
+                <tr>
+                    <td style="color:#88569F;">{{ orders.id }}</td>
+                    <td style="color:#88569F;"> {{ orders.date | date('d/m/Y')}}</td>
+                    <td>
+                        <a href="" class="bouton" style="background-color: #88569F; padding:7px; font-size:medium;">Voir mon ticket</a>
+                    </td>
+                    
+                </tr>
+            {% endfor %}    
+            </tbody>
+        </table>
+        {% endif %}
+    </div>
+
+    <div class="spanLogin1">
+        {% include "base/footerFixed.html.twig" %}
+    </div>
+    <div style="display:none;" class="spanLogin2">
+        {% include "base/footerFixed.html.twig" %}
+    </div>
+</body>
+  
+{% endblock %}
+
+ 

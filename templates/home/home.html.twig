@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+
+{# ================ TITRE DE LA PAGE =======================#}
+
+{% block title %}
+    {{ parent() }} Welcome
+{% endblock %}
+
+{# ================ CONTENU =======================#}
+
+{% block body %}
+
+<a class="navbar-brand logo" href="{{path('listEvent') }}">
+  <img src="{{ asset('img/logo1.png') }}" alt="LOGO ICI" class="mb-5 mt-3 w-25" >
+</a>
+
+  <div class="contenu"> 
+      
+      <h2 class="jesuis">JE SUIS...</h2>
+      
+      <div class="bouton1">
+        <a href="{{ path('registerConnectStudent') }}" class="bouton" role="button" type="button">Un Étudiant</a>
+      </div>
+      <div class="bouton2">
+        <a href="{{ path('registerConnectOffice') }}" class="bouton" role="button" type="button">Un BDE</a>
+      </div>      
+
+    <h1>Qu'est-ce que CAMPUS ?</h1>
+    <p class="soustitre"><i style="color: #88569F;">L’allié de vos événements étudiants</i></p>
+    {# Oui, j'ai honte d'avoir mit un i et d'en plus avoir mit du style dans ce i, milles excuses, mais il est 5h du matin :( #}
+
+    <p class="minititre" style="color: #88569F;">Créer vos évènements …</p>
+    <p class="texte" style="color: #88569F;">Campus vous fournis une plateforme privée pour créer, gérer et partager vos événements auprès des étudiants de votre établissement.</p>
+
+    <p class="minititre" style="color: #88569F;">… et gérer les participations</p>
+    <p class="texte margbas" style="color: #88569F;">Les étudiants n’auront plus qu’à s’inscrire sur la plateforme grâce au code BDE personnalisé que vous leur fournirez pour accéder à toutes les informations de vos événements. Vous pourrez également proposer à la vente des billets pour vos évènements ou week-end.</p>
+
+    <!-- <p>Partenaire en-dessous</p> -->
+    <p class="minititre" style="color: #88569F;">Ils nous font confiance</p>
+
+    <div class="part">
+      <div class="logoPart1">
+        <img src="{{ asset('img/bde4.png') }}" class="logopart" alt="logo partenaire campus 1">
+        <img src="{{ asset('img/bde2.png') }}" class="logopart" alt="logo partenaire campus 2">
+        <img src="{{ asset('img/bde3.png') }}" class="logopart" alt="logo partenaire campus 3">
+      </div>
+      <div class="logoPart2">
+        <img src="{{ asset('img/bde1.png') }}" class="logopart" alt="logo partenaire campus 4">
+        <img src="{{ asset('img/bde5.png') }}" class="logopart" alt="logo partenaire campus 5">
+      </div>
+    </div>
+  </div>
+
+{% include "base/footerScroll.html.twig" %}
+{% endblock %}
+
+
+
+

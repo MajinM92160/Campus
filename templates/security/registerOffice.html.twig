@@ -1,0 +1,50 @@
+{% extends "base.html.twig" %}
+
+{# ================ TITRE DE LA PAGE ======================= #}
+
+{% block title %}
+    {{ parent() }} Inscription
+{% endblock %}
+
+{# ================ CONTENU ======================= #}
+
+{% block body %}
+
+    <a href="{{path('home') }}">
+        <img src="{{ asset('img/logo1.png') }}" alt="LOGO ICI" class="mb-5 mt-3 w-25" >
+    </a>
+
+    <div class="contenu">
+        <h2 class="jesuis">Inscription BDE...</h2>
+
+        {{ form_start(form) }}
+
+        {{ form_row(form.email) }}
+
+        {{ form_row(form.password) }}
+
+        {{ form_row(form.confirmPassword) }}
+
+        {{ form_row(form.name) }}
+
+        {{ form_row(form.presentation) }}
+
+        {{ form_row(form.phone) }}
+
+        {{ form_row(form.address) }}
+
+        {{ form_row(form.code_office) }}
+        <p class="soustitre">*Le code secret devra être fourni par vos étudiants au moment de leur inscription afin qu'ils soient rattachés à votre établissement. A conserver très précieusement !</p>
+
+
+        {{ form_row(form.enregistrer) }}
+        
+        {{ form_end(form) }}
+
+        <div class="bouton2">
+            <a href="{{ path('home') }}" class="bouton" role="button" type="button">Retour</a>
+        </div>
+    </div>
+
+{% include "base/footerScroll.html.twig" %}
+{% endblock %}

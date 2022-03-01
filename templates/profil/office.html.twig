@@ -1,0 +1,30 @@
+{% extends "base.html.twig" %}
+
+{# ================ TITRE DE LA PAGE =======================#}
+
+{% block title %}
+    {{ parent() }} Office
+{% endblock %}
+
+{# ================ CONTENU =======================#}
+
+{% block body %}
+
+    <div class="contenu" style="margin-top: 140px;">
+        <h1>Bonjour, {{office.name}}</h1>
+
+        <h3 class="minititre" style="color:#28A19A;">Sélectionnez une action</h3>
+            <div class="bouton1">
+                <a href="{{ path('officeListEvent') }}" type="button" class="bouton">Gestion évènements</a>
+            </div>
+            <div class="bouton1">
+                <a href="{{ path('officeInfos') }}" type="button" class="bouton">Mes informations</a>
+            </div>
+            <div class="bouton1">
+                <a href="{{ path('listStudents') }}" type="button" class="bouton">Mes étudiants</a>
+            </div>
+
+    </div>
+
+{% include "base/footerFixed.html.twig" %}
+{% endblock %}

@@ -1,0 +1,131 @@
+<body>
+    {# ================ MESSAGES FLASH =======================#}
+        
+        {% for message in app.flashes('success') %}
+            <div class="alert alert-success text-center">
+                {{ message }}
+            </div>
+            {% endfor %}
+            {% for message in app.flashes('danger') %}
+            <div class="alert alert-danger text-center">
+                {{ message }}
+            </div>
+        {% endfor %}
+
+    {# ================ CONTENU =======================#}
+    
+
+
+    <div class="container tableauInfoPC" style="margin-top: 200px;">
+        {% for office in office %}
+            <h1>Liste des évènements du BDE {{ office.name }}</h1>
+        {% endfor %}
+        
+            {# <p>A voir comment ça se passe pour la réinitialisation du mot de passe avant de faire un UserType ? </p> #}
+            <table class="table table-light mt-5" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.363);">
+                <thead>
+                    <tr>
+                        <th scope="col" style="color: #88569F;">#</th>
+                        <th scope="col" style="color: #88569F;">Nom</th>
+                        <th scope="col" style="color: #88569F;">Date</th>
+                        <th scope="col" style="color: #88569F;">Lieu</th>
+                        <th scope="col" style="color: #88569F;">Description</th>
+                        <th scope="col" style="color: #88569F;">Modalité</th>
+                        <th scope="col" style="color: #88569F;">Prix</th>
+                        <th scope="col" style="color: #88569F;">Supprimer</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for events in events %}   
+                        <tr>
+                            <td style="color: #88569F;">{{ events.id }}</td>
+                            <td style="color: #88569F;">{{ events.name }}</td>
+                            <td style="color: #88569F;">{{ events.date | date('d-m-Y') }}</td>
+                            <td style="color: #88569F;">{{ events.place }}</td>
+                            <td style="color: #88569F;">{{ events.description }}</td>
+                            <td style="color: #88569F;">
+                                {% if events.free == 0 %}
+                                    Payant
+                                {% else %}
+                                    Gratuit
+                                {% endif %}
+                            </td>
+                            <td style="color: #88569F;">{{ events.price }}</td>
+                            <td style="color: #88569F;">
+                                <a style="background-color: #88569F; padding:7px; font-size:medium;" href="{{ path('deleteEventAdmin', {id: events.id}) }}" onclick="return confirm('Etes-vous sûr de vouloir supprimer cet évènement ?')" class="bouton">Supprimer</a>
+                            </td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+    </div>
+    <div class="container tableauInfoTel" style="margin-top: 200px; display:none;">
+        {% for office in office %}
+            <h1>Liste des évènements du BDE {{ office.name }}</h1>
+        {% endfor %}
+            {# <p>A voir comment ça se passe pour la réinitialisation du mot de passe avant de faire un UserType ? </p> #}
+        <table class="table table-light mt-5" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.363);">
+            <thead>
+                <tr>
+                    <th scope="col" style="color: #88569F;">#</th>
+                    <th scope="col" style="color: #88569F;">Nom</th>
+                    <th scope="col" style="color: #88569F;">Date</th>
+                    <th scope="col" style="color: #88569F;">Lieu</th>
+                    <th scope="col" style="color: #88569F;">Description</th>
+                    <th scope="col" style="color: #88569F;">Modalité</th>
+                    <th scope="col" style="color: #88569F;">Prix</th>
+                    <th scope="col" style="color: #88569F;">Supprimer</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for events in events %}   
+                    <tr>
+                        <td style="color: #88569F;">{{ events.id }}</td>
+                        <td style="color: #88569F;">{{ events.name }}</td>
+                        <td style="color: #88569F;">{{ events.date | date('d-m-Y') }}</td>
+                        <td style="color: #88569F;">{{ events.place }}</td>
+                        <td style="color: #88569F;">{{ events.description }}</td>
+                        <td style="color: #88569F;">
+                            {% if events.free == 0 %}
+                                Payant
+                            {% else %}
+                                Gratuit
+                            {% endif %}
+                        </td>
+                        <td style="color: #88569F;">{{ events.price }}</td>
+                        <td style="color: #88569F;">
+                            <a style="background-color: #88569F; padding:7px; font-size:medium;" href="" onclick="return confirm('Etes-vous sûr de vouloir supprimer cet évènement ?')" class="bouton">Supprimer</a>
+                        </td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+    {% for office in office %}
+        <div class="bouton1">
+            <a href="{{ path('gestBde') }}" style="background-color: #88569F;" class="bouton" role="button" type="button">Retour</a>
+        </div>
+    {% endfor %}
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {# ================ FOOTER =======================#}
+
+    <div class="spanLogin1">
+        {% include "base/footerFixed.html.twig" %}
+    </div>
+    <div style="display:none;" class="spanLogin2">
+        {% include "base/footerNoScroll.html.twig" %}
+    </div>
+
+</body>

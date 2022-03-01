@@ -1,0 +1,26 @@
+.boutonAction {
+    padding: 7px 7px;
+    background-color: #28A19A;
+    margin: 5px;
+    text-decoration: none;
+    font-weight: 200;
+    color: white;
+    text-align: center;
+    width: 40%;
+    font-size: 16px;
+
+    border-width: 0px !important;
+    border-style: none !important;
+    border-image: none !important;
+}
+
+.boutonAction:hover {
+    color: white;
+    box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.295);
+    background-color: #2fbab2;
+    transition: 0.3s;
+}
+
+.boutonAction:not(:hover) {
+    transition: 0.3s;
+}

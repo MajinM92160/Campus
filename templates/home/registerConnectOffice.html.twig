@@ -1,0 +1,44 @@
+{% extends "base.html.twig" %}
+
+{# ================ TITRE DE LA PAGE =======================#}
+
+{% block title %}
+    {{ parent() }} Inscription
+{% endblock %}
+
+{# ================ CONTENU =======================#}
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+            <div class="alert alert-success text-center">
+                {{ message }}
+            </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+            <div class="alert alert-danger text-center">
+                {{ message }}
+            </div>
+    {% endfor %}
+
+    <a href="{{path('home') }}">
+        <img src="{{ asset('img/logo1.png') }}" alt="LOGO ICI" class="mb-5 mt-3 w-25" >
+    </a>
+
+    <div class="contenu">
+        <h2 class="jesuis">Je souhaite...</h2>
+
+        <div class="bouton1">
+            <a href="{{ path('login') }}" class="bouton" role="button" type="button">Me connecter</a>
+            </div>
+        <div class="bouton2">
+            <a href="{{ path('registerOffice') }}" class="bouton" role="button" type="button">M'inscrire</a>
+        </div>
+        <div class="bouton2">
+            <a href="{{ path('home') }}" class="bouton" role="button" type="button">Retour</a>
+        </div>
+
+    </div>
+
+{% include "base/footerFixed.html.twig" %}
+{% endblock %}

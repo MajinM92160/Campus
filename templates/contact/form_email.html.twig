@@ -1,0 +1,94 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {{ parent() }} Contact
+{% endblock %}
+
+{% block body %}
+
+    {% if not app.user %}
+    <a href="{{path('home') }}">
+        <img src="{{ asset('img/logo1.png') }}" alt="LOGO ICI" class="mb-5 mt-3 w-25" >
+    </a>
+    {% endif %}
+
+    <div class="contenu" style="margin-top:140px;">
+        <h1>Formulaire de contact</h1>
+        <form id="contact-form" method="post" action="{{ path('emailSend') }}" role="form">
+
+            <div class="messages"></div>
+
+                <div class="controls">
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_lastname"></label>
+                                <input id="form_lastname" type="text" name="name" class="form-control"
+                                    placeholder="Nom *" required="required"
+                                    data-error="Firstname is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_name"></label>
+                                <input id="form_name" type="text" name="surname" class="form-control"
+                                    placeholder="Prénom *" required="required"
+                                    data-error="Lastname is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_email"></label>
+                                <input id="form_email" type="email" name="email" class="form-control"
+                                    placeholder="Email *" required="required"
+                                    data-error="Valid email is required.">
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="form_need"></label>
+                                <select id="form_need" name="need" class="form-control" required="required"
+                                        data-error="Spécifiez l'objet de votre mail">
+                                    <option value="Reclamation">Réclamation</option>
+                                    <option value="Information">Information</option>
+                                    <option value="Autre">Autre</option>
+                                </select>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="form_message"></label>
+                                <textarea id="form_message" name="message" class="form-control" placeholder="Message *"
+                                        rows="4" required="required" data-error="Please, leave us a message."></textarea>
+                                <div class="help-block with-errors"></div>
+                            </div>
+                        </div>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <br><p class="soustitre">
+                                * Ces champs sont requis
+                        </div>
+                    </div>
+
+                    <div class="col-md-12 mt-4">
+                        <input type="submit" class="bouton" value="Envoyer">
+                    </div>
+
+                </div>
+            </div>
+        </form>
+    </div>
+
+    {% include 'base/footerScroll.html.twig' %}
+{% endblock %}
+

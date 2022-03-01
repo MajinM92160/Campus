@@ -1,0 +1,37 @@
+<body>
+
+    
+    
+    {# ================ MESSAGES FLASH =======================#}
+        
+        {% for message in app.flashes('success') %}
+        <div class="alert alert-success text-center">
+            {{ message }}
+        </div>
+        {% endfor %}
+        {% for message in app.flashes('danger') %}
+        <div class="alert alert-danger text-center">
+            {{ message }}
+        </div>
+        {% endfor %}
+    
+    {# ================ CONTENU =======================#}
+        <div class="contenu" style="margin-top: 140px;">
+            <h1>Bonjour, {{app.user.firstName}}</h1>
+    
+            <h3 class="minititre" style="color:#28A19A;">Sélectionnez une action</h3>
+                <div class="bouton1">
+                    <a href="{{ path('gestBde') }}" type="button" class="bouton">Gérer les BDE</a>
+                </div>
+                <div class="bouton2">
+                    <a href="{{ path('gestStudent') }}" type="button" class="bouton">Gérer les étudiants</a>
+                </div>
+                <div class="bouton1" style="margin-bottom:35px;">
+                    <a href="{{ path('logout') }}" type="button" class="bouton">Déconnexion</a>
+                </div>
+        </div>
+    {% include "base/footerFixed.html.twig" %}
+    </body>
+    
+    
+    {# ================ TITRE DE LA PAGE =======================#}

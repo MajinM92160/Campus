@@ -1,0 +1,45 @@
+{% extends "base.html.twig" %}
+
+{# ================ TITRE DE LA PAGE ======================= #}
+
+{% block title %}
+    {{ parent() }} Code BDE
+{% endblock %}
+
+{# ================ CONTENU ======================= #}
+
+{% block body %}
+
+    {% for message in app.flashes('success') %}
+            <div class="alert alert-success text-center">
+                {{ message }}
+            </div>
+    {% endfor %}
+    {% for message in app.flashes('danger') %}
+            <div class="alert alert-danger text-center">
+                {{ message }}
+            </div>
+    {% endfor %}
+
+    <a href="{{path('home') }}">
+        <img src="{{ asset('img/logo1.png') }}" alt="LOGO ICI" class="mb-5 mt-3 w-25" >
+    </a>
+
+    <div class="contenu">
+        <h2 class="jesuis">Code Secret...</h2>
+        <form action="{{ path("registerStudent")}}" method="post">
+            <div class="conteneurChamp">
+                <input name="research" type="text" class="champFormulaireCheck" placeholder="Code secret de mon BDE*">
+            </div>
+            <div class="bouton2">
+                <button type="submit" class="bouton">Valider</button>
+            </div>
+        </form>
+        <a href="{{ path('home') }}" class="bouton" role="button" type="button">Retour</a>
+        
+        <h4 class="soustitre" style="margin-top: 35px;">*Rentrez ici le code secret fourni par le BDE de votre établissement afin de vous inscrire</h4>
+    </div>
+</body>
+
+{% include "base/footerFixed.html.twig" %}
+{% endblock %}

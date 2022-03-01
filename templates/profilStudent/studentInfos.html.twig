@@ -1,0 +1,78 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+
+
+<body>
+    
+
+
+    <div class="container tableauInfoPC" style="margin-top: 200px;">
+        <h1>Mes informations</h1>
+        {# <p>A voir comment ça se passe pour la réinitialisation du mot de passe avant de faire un UserType ? </p> #}
+    <table class="table table-light mt-5" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.363);">
+            <thead>
+                <tr>
+                    <th scope="col" style="color: #88569F;">Email</th>
+                    <th scope="col" style="color: #88569F;">Téléphone</th>
+                    <th scope="col" style="color: #88569F;">Adresse</th>
+                    <th scope="col" style="color: #88569F;">Prénom</th>
+                    <th scope="col" style="color: #88569F;">Nom</th>
+                    <th scope="col" style="color: #88569F;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="color: #88569F;">{{ student.email }}</td>
+                    <td style="color: #88569F;">{{ student.phone }}</td>
+                    <td style="color: #88569F;">{{ student.address }}</td>
+                    <td style="color: #88569F;">{{ student.firstName }}</td>
+                    <td style="color: #88569F;">{{ student.lastName }}</td>
+                    <td style="color: #88569F;">
+                        <a style="background-color: #88569F; padding:7px; font-size:medium;" href="{{ path ('editstudent')}}" class="bouton">Modifier</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="container tableauInfoTel" style="margin-top: 200px; display:none;">
+        <h1>Mes informations</h1>
+        {# <p>A voir comment ça se passe pour la réinitialisation du mot de passe avant de faire un UserType ? </p> #}
+    <table class="table table-light mt-5" style="box-shadow: 0px 0px 10px 0px rgba(0, 0, 0, 0.363);">
+            <thead>
+                <tr>
+                    <th scope="col" style="color: #88569F;">Email</th>
+                    <th scope="col" style="color: #88569F;">Téléphone</th>
+                    <th scope="col" style="color: #88569F;">Adresse</th>
+                    <th scope="col" style="color: #88569F;">Prénom</th>
+                    <th scope="col" style="color: #88569F;">Nom</th>
+                    <th scope="col" style="color: #88569F;">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td style="color: #88569F;">{{ student.email }}</td>
+                    <td style="color: #88569F;">{{ student.phone }}</td>
+                    <td style="color: #88569F;">{{ student.address }}</td>
+                    <td style="color: #88569F;">{{ student.firstName }}</td>
+                    <td style="color: #88569F;">{{ student.lastName }}</td>
+                    <td style="color: #88569F;">
+                        <a style="background-color: #88569F; padding:7px; font-size:medium;" href="{{ path('editstudent')}}" class="bouton">Modifier</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div class="spanLogin1">
+        {% include "base/footerFixed.html.twig" %}
+    </div>
+    <div style="display:none;" class="spanLogin2">
+        {% include "base/footerFixed.html.twig" %}
+    </div>
+
+</body>
+
+{% endblock %}

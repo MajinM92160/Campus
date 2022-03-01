@@ -1,0 +1,45 @@
+.reponse{
+    display: flex;
+    justify-content: center;
+    margin: 20px;
+}
+
+.card-reponse{
+    margin: 0px 10px;
+    border: solid 1px #28A19A;
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.card-reponse p {
+    margin: 0px;
+}
+
+.participant-container{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px 0px;
+}
+
+.participant{
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 40%;
+}
+
+.participant-nom {
+    margin-bottom: 20px;
+}
+
+.participant-nom p{
+    margin-bottom: 0px;
+}
+
+.participant-comment{
+    margin-bottom : 0px;
+    font-style: italic;
+}
+
+

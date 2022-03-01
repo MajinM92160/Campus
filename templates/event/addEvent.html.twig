@@ -1,0 +1,74 @@
+{% extends "base.html.twig" %}
+
+{# ================ TITRE DE LA PAGE =======================#}
+
+{% block title %}
+	{% if ajout==true  %} {{ parent() }}ajout d'évènement
+	{% else %} {{ parent() }}Modification d'évènement
+	{% endif %}
+{% endblock %}
+
+{# ================ CONTENU =======================#}
+
+{% block body %}
+
+{# ---------- Message flash --------- #}
+
+	{% for message in app.flashes('success') %}
+		<div class="alert alert-success text-center"> {{ message }}
+		</div>
+	{% endfor %}
+	{% for message in app.flashes('danger') %}
+		<div class="alert alert-danger text-center"> {{ message }}
+		</div>
+	{% endfor %}
+
+{# ---------- Titre --------- #}
+
+	{# {% block titre %}
+		{% if ajout==true  %}
+			Ajout d'évènement
+		{% else %}
+			Modification d'évènement
+		{% endif %}
+	{% endblock %} #}
+
+
+	<div class="contenu" style="margin-top: 140px;">
+
+        {% if app.request.get('_route') == 'officeListEvent' %}
+            <h1>Ajout</h1>
+        {% else %}
+            <h1>Modification</h1>
+        {% endif %}
+
+        {# {{ form(form) }} #}
+
+{# ---------- Formulaire --------- #}
+
+        {{ form_start(form) }}
+
+        {{ form_row(form.name) }}
+        {{ form_row(form.date) }}
+        {{ form_row(form.place) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.free) }}
+        {{ form_row(form.price) }}
+
+        {{ form_row(form.Valider) }}
+        {{ form_end(form) }}
+
+
+        <div class="bouton2">
+            <a href="{{ path('addEvent') }}" type="button" class="bouton">Vider les champs</a>
+        </div>
+
+        <div class="bouton1">
+            <a href="{{ path('office') }}" type="button" class="bouton">Retour menu profil</a>
+        </div>
+
+    </div>
+    
+
+{% include "base/footerScroll.html.twig" %}
+{% endblock %}

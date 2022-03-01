@@ -1,0 +1,145 @@
+{% extends "base.html.twig" %}
+
+{% block title %}
+    {{ parent() }} Événements
+{% endblock %}
+
+{% block body %}
+
+    <section class="gestFooter">
+        <div class="space"></div>
+
+        {% if app.user.roles == ["student"] %}
+        <div class="contenuCarte contenuCartePC" style="flex-direction: column;">
+            <p class="jesuis" style="margin-bottom:5px;">Salut {{app.user.firstName}} {{app.user.lastName}} !</p>
+            <h1 style="margin: 0 auto;">Événements de ton BDE</h1>
+            <p style="margin: 20px 0px ;"> Tu trouveras ci-dessous l'ensemble des événements proposés par ton BDE. <br> Si tu veux avoir plus de détails, indiquer ta participation ou acheter un ticket, tu peux cliquer sur <strong>" En savoir plus "</strong></p>
+        </div>
+        {% endif %}
+
+        {% if app.user.roles == ["office"] %}
+        <div class="contenuCarte contenuCartePC" style="flex-direction: column;">
+            <p class="jeSuis" style="margin-bottom:5px;">Salut {{app.user.name}} !</p>
+            <h1 style="margin: 0 auto;">Événements proposés</h1>
+            <p style="margin: 20px 0px ;"> Tu trouveras ci-dessous l'ensemble des événements proposés aux étudiants. </p>
+
+        </div>
+        {% endif %}
+
+        {% for event in events %}
+
+
+        <div class="contenuCarte contenuCartePC">
+            <h3>{{ event.name }}</h3>
+            <span></span>
+            <p>{{ event.date | date('d/m/Y') }}</p>
+            <span></span>
+            <p>{{ event.place }}</p>
+            <span></span>
+            {% if event.free == 0 %}
+                <p>{{ event.price }}€</p>
+            {% else %}
+                <p>Gratuit</p>
+            {% endif %}
+            <span></span>
+
+            <div class="bouton3" style="display: flex;">
+
+                {% if app.user.roles == ["office"] %}
+                    <a href="{{ path('detailEvent', {id: event.id}) }}" class="boutonAction boutonDetail" role="button" type="button" >Détails</a>
+                    <a href="{{ path('officeEditEvent', {id: event.id}) }}" class="boutonAction boutonDetail">Modifier</a>
+                    <a href="{{ path('deleteEvent', {id: event.id}) }}" onclick="return confirm('Etes-vous sûr de vouloir supprimer cet event ?')" class="boutonAction boutonDetail" >Supprimer</a>
+                {% endif %}
+
+                {% if app.user.roles == ["student"] %}
+                    <a href="{{ path('detailEvent', {id: event.id}) }}" class="bouton boutonDetail" role="button" type="button">En savoir plus</a>
+                {% endif %}
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </section>
+    
+    {% include "base/footerNoScroll.html.twig" %}
+
+{% endblock %}
+
+
+
+
+{# {% block body %} #}
+
+{# ================ CONTENU =======================#}
+{# <div class="container">
+    <table class="table table-dark mt-5">
+        <thead>
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">Nom</th>
+                <th scope="col">Date</th>
+                <th scope="col">Lieu</th>
+                <th scope="col">Payant/Gratuit</th>
+                <th scope="col">Actions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+            {% for event in events %}
+
+            <tr>
+                <th scope="row">{{ event.id }}</th>
+                <td>{{ event.name }}</td>
+                <td>{{ event.date | date('d/m/Y') }}</td>
+                <td>{{ event.place }}</td>
+
+                {% if event.free == 0 %}
+                <td>Payant</td>
+                {% else %}
+                    <td>Gratuit</td>    
+                {% endif %}
+
+                <td>
+                    <a href="{{ path('detailEvent', {id: event.id}) }}" class="btn btn-success">Détails</a>
+                </td>
+                {% endfor %}
+            </tr>
+
+        </tbody>
+    </table>
+</div>
+
+{% endblock %} #}
+
+{# ================ TITRE DE LA PAGE =======================#}
+
+            {# <div class="card mb-3 col-md-3 ">
+                <div class="text-center">
+                </div>
+                <div class="card-body">
+                    <h5 class="card-title">{{ event.name }}</h5>
+                </div>
+                <ul class="list-group list-group-flush">
+                    {% for event in events %}
+                        <li class="list-group-item">{{ event.name }}</li>
+                    {% endfor %}
+    
+                </ul>
+                <div class="card-body">
+                    <a href="{{ path('detailEvent', {id:event.id}) }}" class="card-link btn btn-success">Voir plus</a>
+    
+                </div>
+                <div class="card-footer text-muted">
+                    Sortie en salle: {{  event.date  | date('d/m/Y') }}
+                </div>
+                {% if event.price > 0 %}
+		<a href="{{ path('addCart', {'id': event.id, route : 'home'}) }}" class="card-link btn btn-primary">
+        <button type="button" class="btn btn-primary">Ajouter au panier</button>
+        </a>
+
+		
+
+        <br><br>
+		{% endif %} #}

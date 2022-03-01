@@ -1,0 +1,146 @@
+{% extends "base.html.twig" %}
+
+{# ================ TITRE DE LA PAGE =======================#}
+
+{% block title %}
+    {{ parent() }} {{ infoEvent.Name }}
+{% endblock %}
+
+{# ================ CONTENU =======================#}
+
+{% block body %}
+
+	{# -------------- Détails de l'événement  -------------- #}
+
+	<div class="contenu" style="margin-top:140px; margin-bottom:10px;">
+
+		<h1>{{ infoEvent.name }}</h1>
+
+		<p>{{ infoEvent.date | date('d/m/Y') }}
+			| {{ infoEvent.place | capitalize}}
+			|
+			{% if infoEvent.free == 0 %} {{ infoEvent.price }}€
+				{% else %}Gratuit
+			{% endif %}
+		</p>
+
+
+		<h3 class="minititre minidetail" style="color:#28A19A;">A quoi s'attendre ?</h3>
+		<p>{{ infoEvent.description }}</p>
+
+	</div>
+
+	{# -------------- Bouton achat  -------------- #}
+
+	{% if app.user.roles == ["student"] and result is not empty and result.status == 'ok' and infoEvent.price > 0 %}
+
+			<div class="contenu" style="margin-top:10px; margin-bottom:10px;">
+
+				<a class="bouton2" style="margin: 0px;" href="{{ path('addCart', {'id': infoEvent.id, route : 'home'}) }}">
+					<button class="bouton">Achète ton ticket !</button>
+				</a>
+
+			</div>
+
+	{% endif %}
+
+	{# -------------- Formulaire de participation  -------------- #}
+
+	{# user clique participe alors affichage de l'encart achète ton ticket #}
+
+	{% if app.user.roles == ["student"] %}
+		<div class="contenu" style="margin-top:10px; margin-bottom:10px;">
+			<h4 class="minititre minidetail" style="color:#28A19A;">
+				Préviens ton BDE de ta venue
+			</h4>
+
+			<form method="post" action="{{ path('detailEvent', {'id':infoEvent.id}) }}">
+
+				<select class="champFormulaire" name="status">
+					<option value="">Dis nous si tu viens ...</option>
+					<option {% if result is not empty and result.status == 'ok' %} selected {% endif %} value="ok">Participe</option>
+					<option {% if result is not empty and result.status == 'no' %} selected {% endif %} value="no">Ne participe pas</option>
+					<option {% if result is not empty and result.status == 'maybe' %} selected {% endif %} value="maybe">Intéressé.e</option>
+				</select>
+
+				<textarea class="champFormulaire" name="comment" type="text" placeholder="Laisse nous un message...">{% if result is not empty and result.comment %}{{ result.comment }}{% endif %}</textarea>
+
+				<div class="bouton1">
+					<button class="bouton" type="submit">envoyer</button>
+				</div>
+
+			</form>
+		</div>
+	{% endif %}
+
+	{# -------------- Réponses  -------------- #}
+
+	<div class="contenu" style="margin-top:10px; margin-bottom:10px;">
+
+		<h4 class="minititre minidetail" style="color:#28A19A;">
+			Réponses
+		</h4>
+
+		<div class="reponse">
+			<div class="card-reponse">
+				<p> {{ ok | length }}
+				</p>
+				<p>
+					{% if ok | length <= 1 %}Participant{% elseif ok | length > 1 %}Participants
+					{% endif %}
+				</p>
+			</div>
+			<div class="card-reponse">
+				<p> {{ maybe | length }}
+				</p>
+				<p>
+					{% if maybe | length <= 1 %}Intéressé{% elseif maybe | length > 1 %}Intéressés
+					{% endif %}
+				</p>
+			</div>
+			<div class="card-reponse">
+				<p> {{ no | length }}
+				</p>
+				<p>
+					{% if no | length <= 1 %}Ne participe pas{% elseif no | length > 1 %}Ne participent pas
+					{% endif %}
+				</p>
+			</div>
+		</div>
+	</div>
+
+	{# -------------- Liste des participants  -------------- #}
+
+	<div class="contenu" style="margin-top:10px; margin-bottom:10px;">
+
+		<h4 class="minititre minidetail" style="color:#28A19A;">
+			Liste des participants
+		</h4>
+
+		<div class="participant-container">
+			<div class="participant">
+
+				{% for participation in infoEvent.participations %}
+
+					
+					{% if participation.status == 'ok' %}<div class="participant-nom"><p>{{ participation.user.firstName | capitalize}} {{ participation.user.lastName | capitalize}}</p>
+
+						{% if participation.comment is not empty %}
+							<p class="participant-comment">« {{ participation.comment }} »</p>
+						{% endif %}
+
+					{% endif %}
+					</div>
+
+				{% endfor %}
+			</div>
+		</div>
+
+
+	</div>
+
+	<div class="space"></div>
+	
+	{% include "base/footerScroll.html.twig" %}
+
+{% endblock %}

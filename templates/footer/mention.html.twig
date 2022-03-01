@@ -1,0 +1,35 @@
+{% extends "base.html.twig" %}
+
+{# ================ TITRE DE LA PAGE =======================#}
+
+{% block title %}
+    {{ parent() }} Mentions légales
+{% endblock %}
+
+{# ================ CONTENU =======================#}
+
+{% block body %}
+
+    {% if not app.user %}
+    <a href="{{path('home') }}">
+        <img src="{{ asset('img/logo1.png') }}" alt="LOGO ICI" class="mb-5 mt-3 w-25" >
+    </a>
+    {% endif %}
+
+    <div class="contenuCarte contenuCartePC" style="flex-direction:column; margin-top:140px;">
+        <h1>Mentions légales</h1>
+
+        <h4 class="minititre minidetail" style="color:#28A19A;">Politique de confidentialité</h4>
+        <p>Le ministère de l’Économie, des finances et de la Relance s’engage à ce que la collecte et le traitement de vos données, effectués à partir du portail economie.gouv.fr, soient conformes au règlement général sur la protection des données (RGPD) et à la loi Informatique et Libertés.</p><br>
+        
+        <h4 class="minititre minidetail" style="color:#28A19A;">Réutilisation des contenus et liens</h4>
+        <p>Sauf mention explicite de propriété intellectuelle détenue par des tiers, les contenus de ce site sont proposés sous licence ouverte Etalab 2.0. (pdf - 233 Ko)</p><br>
+        
+        <p>Vous êtes notamment libres de les reproduire, copier, modifier, extraire, transformer, communiquer diffuser, redistribuer, publier, transmettre et exploiter sous réserve de mentionner leur source, leur date de dernière mise à jour et ne pas induire en erreur des tiers quant aux informations qui y figurent.</p><br>
+        
+        <p>Tout site public ou privé est autorisé à établir, sans autorisation préalable, un lien (y compris profond) vers les informations diffusées sur ce site. En revanche, les pages du portail ne doivent pas être imbriquées à l'intérieur des pages d'un autre site.</p><br>
+        <p>Cette autorisation de mise en place d'un lien est valable pour tout support, à l'exception de ceux diffusant des informations à caractère polémique, pornographique, xénophobe ou pouvant, dans une plus large mesure porter atteinte à la sensibilité du plus grand nombre</p><br>
+    </div>
+
+{% include "base/footerScroll.html.twig" %}
+{% endblock %}

@@ -1,0 +1,59 @@
+{% extends "base.html.twig" %}
+
+{# ================ TITRE DE LA PAGE =======================#}
+
+{% block title %} {{ parent() }}
+	Panier
+{% endblock %}
+
+{# ================ CONTENU =======================#}
+
+{% block body %}
+<body>
+	<div class="contenuCarte contenuCartePC w-50" style="flex-direction:column; margin-top: 200px;">
+		<h1>Mon Panier</h1>
+		{% if total > 0 %}
+			<table class="table" style="border: solid 2px #2fbab2;">
+				<thead>
+					<tr>
+						<th scope="col" style="color:#88569F;">Titre</th>
+						<th scope="col" style="color:#88569F;">Quantité</th>
+						<th scope="col" style="color:#88569F;">Prix</th>
+						<th scope="col" class="w-25" style="color:#88569F;">Supprimer</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for item in fullcart %}
+						<tr class="">
+							<td scope="row" style="color:#88569F;">{{ item.events.name }}</td>
+							<td style="color:#88569F;">{{ item.quantity }}</td>
+							<td style="color:#88569F;">{{ item.events.price }}€</td>
+							<td style="color:#88569F;">
+								<a href="{{ path('removeCart',{'id':item.events.id}) }}" class="bouton boutonDetail w-50 " role="button" type="button">
+									<i class="fas fa-trash"></i>
+								</a>
+							</td>
+						</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+			<div class="basPanier" style="margin-left:60%">
+				<div class="needSpace">
+					<h2 style="color:#88569F; font-weight:bold;">Total : {{ total }}€</h2>
+					{# ================ Bouton validation panier =======================#}
+					<a href="{{ path('finalOrder') }}" class="bouton boutonDetail" role="button" type="button">Valider le panier</a>
+				</div>
+			</div>
+		{% else %}
+			<p class="minititre">Panier vide !</p>
+		{% endif %}
+	</div>
+
+	<div class="spanLogin1">
+        {% include "base/footerFixed.html.twig" %}
+    </div>
+    <div style="display:none;" class="spanLogin2">
+        {% include "base/footerFixed.html.twig" %}
+    </div>
+</body>
+{% endblock %}

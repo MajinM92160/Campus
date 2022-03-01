@@ -1,0 +1,46 @@
+{% extends "base.html.twig" %}
+
+{# ================ TITRE DE LA PAGE =======================#}
+
+{% block title %}
+    {{ parent() }} Mes étudiants
+{% endblock %}
+
+{# ================ CONTENU =======================#}
+
+{% block body %}
+
+    <div class="contenu" style="margin-top: 140px;">
+
+        {% if app.request.get('_route') == 'officeListEvent' %}
+            <h1>Créer un événement</h1>
+        {% else %}
+            <h1>Modifie ton événement</h1>
+        {% endif %}
+
+{# ---------- Formulaire --------- #}
+
+        {{ form_start(form) }}
+
+        {{ form_row(form.name) }}
+        {{ form_row(form.date) }}
+        {{ form_row(form.place) }}
+        {{ form_row(form.description) }}
+        {{ form_row(form.free) }}
+        {{ form_row(form.price) }}
+
+        {{ form_row(form.Valider) }}
+        {{ form_end(form) }}
+
+        <div class="bouton2">
+            <a href="{{ path('officeListEvent') }}" type="button" class="bouton">Vider les champs</a>
+        </div>
+
+        <div class="bouton1">
+            <a href="{{ path('listEvent') }}" type="button" class="bouton">Retourner à l'accueil</a>
+        </div>
+
+    </div>
+
+{% include "base/footerScroll.html.twig" %}
+{% endblock %}
